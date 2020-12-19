@@ -1,4 +1,6 @@
 package web.config;
+import org.springframework.context.annotation.Scope;
+import web.Car;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -47,4 +49,11 @@ public class WebConfig implements WebMvcConfigurer {
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
+
+/*    @Bean(name="car")
+    @Scope("prototype")
+    public Car getCar() {
+        Car car = new Car();
+        return car;
+    }*/
 }
