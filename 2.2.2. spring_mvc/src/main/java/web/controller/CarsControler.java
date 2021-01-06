@@ -5,11 +5,12 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import web.Car;
-import web.config.WebConfig;
+import web.model.Car;
+import web.service.CarServiceImp;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class CarsControler {
@@ -27,7 +28,11 @@ public class CarsControler {
 /*        ApplicationContext applicationContext =
                 new AnnotationConfigApplicationContext(WebConfig.class);*/
 
-        ArrayList<Car> allCars = new ArrayList<>();
+       // ArrayList<Car> allCars = new ArrayList<>();
+
+        CarServiceImp carServiceImp = new CarServiceImp();
+
+/*
 
         for (int i = 0; i < 5; i++) {
             //Car car = applicationContext.getBean(Car.class);
@@ -37,22 +42,24 @@ public class CarsControler {
             car.setVin(String.valueOf(i));
             allCars.add(car);
             //cars.add(applicationContext.getBean(Car.class));
-        }
+        }*/
 
-        ArrayList<Car> cars = new ArrayList<>();
+       /* ArrayList<Car> cars = new ArrayList<>();*/
 
         int maxCount = Math.min(5, count);
 
-        for (int i = 0; i < maxCount; i++) {
+        List<Car> cars = carServiceImp.getCars(maxCount);
+
+/*        for (int i = 0; i < maxCount; i++) {
 
             cars.add(allCars.get(i));
-/*            StringBuilder stringBuilder = new StringBuilder();
+*//*            StringBuilder stringBuilder = new StringBuilder();
             Car currentCar = cars.get(i);
             stringBuilder.append("Car " + (i+1) + ". Name: " + currentCar.getName()
                     + ". Series: " + currentCar.getSeries()
                     + ". Vin: " + currentCar.getVin());
-            carsString.add(stringBuilder.toString());*/
-        }
+            carsString.add(stringBuilder.toString());*//*
+        }*/
 
         model.addAttribute("cars", cars);
 

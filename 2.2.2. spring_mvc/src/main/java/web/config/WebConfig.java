@@ -1,6 +1,5 @@
 package web.config;
 import org.springframework.context.annotation.Scope;
-import web.Car;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
